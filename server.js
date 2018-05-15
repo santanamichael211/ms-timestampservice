@@ -24,9 +24,17 @@ app.get("/", function (request, response) {
 app.get("/:query", function (request, response) {
   var date = new Date(request.params.query);
   
+  var timeObject = {
+    unix:null,
+    natural:null
+  }
+
+  if(date.toString() != "Invalid Date"){
+    timeObject.unix = date.getTime();
+    timeObject.natural = date.toDateString();
+  }
   
-  
-  response.send(date.toString());
+  response.send(JSON.stringify(timeObject));
 
 });
 
