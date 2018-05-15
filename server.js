@@ -14,7 +14,8 @@ app.set("views", path.join(__dirname,"views"));
 app.set("view engine","pug");
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
+app.get("/:query", function (request, response) {
+  console.log(request.query);
   response.render("index");
 
 });
