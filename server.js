@@ -22,7 +22,12 @@ app.get("/", function (request, response) {
 });
 
 app.get("/:query", function (request, response) {
-  var date = new Date(request.params.query);
+  var query = request.params.query;
+  if(query > ){
+  query = parseInt(query);
+  }
+  
+  var date = new Date(query);
   
   var timeObject = {
     unix:null,
@@ -51,7 +56,7 @@ app.get("/:query", function (request, response) {
   }
   
   response.render("timeserv",{
-  time:JSON.stringify(t)
+  time:JSON.stringify(timeObject)
   })
 
 });
