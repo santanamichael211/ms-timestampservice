@@ -23,7 +23,7 @@ app.get("/", function (request, response) {
 
 app.get("/:query", function (request, response) {
   var query = request.params.query;
-  if(query > ){
+  if(Number.isInteger(parseInt(query))){
   query = parseInt(query);
   }
   
