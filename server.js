@@ -30,11 +30,29 @@ app.get("/:query", function (request, response) {
   }
 
   if(date.toString() != "Invalid Date"){
+    var monthA = [];
+      monthA[0] = "January";
+      monthA[1] = "February";
+      monthA[2] = "March";
+      monthA[3] = "April";
+      monthA[4] = "May";
+      monthA[5] = "June";
+      monthA[6] = "July";
+      monthA[7] = "August";
+      monthA[8] = "September";
+      monthA[9] = "October";
+      monthA[10] = "November";
+      monthA[11] = "December";
+    
+    var month = monthA[date.getMonth()];
+   
     timeObject.unix = date.getTime();
-    timeObject.natural = date.toDateString();
+    timeObject.natural = month + " " + date.getDate() + ", " + date.getFullYear();
   }
   
-  response.send(JSON.stringify(timeObject));
+  response.render("timeserv",{
+  time:JSON.stringify(t)
+  })
 
 });
 
